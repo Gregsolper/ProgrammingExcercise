@@ -4,6 +4,11 @@
   "compilerOptions": {
     "resolveJsonModule": true,
     "baseUrl": "./",
+    "paths": {
+      "@core/*" : [ "src/app/core/*"],
+      "@modules/*" : ["src/app/modules/*"],
+      "@shared/*" : ["src/app/shared/*"]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
