@@ -8,36 +8,19 @@
         <th>Name</th>
         <th>Team</th>
     </tr>
-    <tr>
+    <tr *ngFor="let item of driversList">
         <td></td>
-        <td>@</td>
-        <td>Miki Villar</td>
-        <td>Everis Center</td>
+        <td>{{item.ranking}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.team}}  </td>
     </tr>
-    <tr>
-        <td></td>
-        <td>@</td>
-        <td>Miki Villar</td>
-        <td>Everis Center</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>@</td>
-        <td>Miki Villar</td>
-        <td>Everis Center</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>@</td>
-        <td>Miki Villar</td>
-        <td>Everis Center</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>@</td>
-        <td>Miki Villar</td>
-        <td>Everis Center</td>
-    </tr>
+    <p>Muestra</p>
+    <ul *ngFor= "let item of allRaces" >
+        <li >{{item}}</li>
+        <li >{{item}}</li>
+    </ul>
+
+    
 </table>
 <div class="mainScreen">
     <router-outlet></router-outlet>

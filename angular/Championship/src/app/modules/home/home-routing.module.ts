@@ -5,6 +5,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
   {
+    /*  this is if you need to link inside */
     path:"driver",
     loadChildren:()=>import('@modules/driver-result/driver-result.module').then(m=>m.DriverResultModule)
     
