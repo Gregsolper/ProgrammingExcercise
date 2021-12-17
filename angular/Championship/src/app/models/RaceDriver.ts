@@ -4,5 +4,5 @@ export class RaceDriver {
     team : string ="";
     time : string = '';
     timeCompare? : Date;
-    position? : number;
+    position : number=99;
 }

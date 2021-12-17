@@ -4,5 +4,5 @@ export class Driver {
     age : number= 20;
     name : string ="";
     team : string ="";
-    gRanking? : number;
+    gRanking : number=99;
 }
