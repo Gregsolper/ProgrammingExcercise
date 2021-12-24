@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { DriverData } from 'src/app/models/DriverData';
+import { DriverRace } from 'src/app/models/DriverRace';
+import { RaceData } from 'src/app/models/RaceData';
+import { RaceDriver } from 'src/app/models/RaceDriver';
+import { InfoService } from 'src/app/services/info.service';
 
 @Component({
   selector: 'app-driver-page',
@@ -7,42 +12,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DriverPageComponent implements OnInit {
 
-  constructor() { }
-  driverData : any
-  driverPositions : Array<any> = []
+  driverShow : DriverData = new DriverData;
+  @HostBinding ('class.is-open')
+  isOpen=false;
+
+  constructor(private infoPage: InfoService) { }
+  driverData : DriverData = new DriverData;
+  driverPositions : Array<DriverRace> = []
 
   ngOnInit(): void {
-    this.driverData = {
-      fotoUrl : '',
-      name :'Lucianni',
-      age : 40,
-      team : 'Everis',
-      globalRanking : 6
-
-    }
-    this.driverPositions = [
-      {
-        race: 'GP Barein',
-        racePosition : 5,
-        raceTime : '1:48:28.75'
-      },
-      {
-        race: 'GP Barein',
-        racePosition : 5,
-        raceTime : '1:48:28.75'
-      },
-      {
-        race: 'GP Barein',
-        racePosition : 5,
-        raceTime : '1:48:28.75'
-      },
-      {
-        race: 'GP Barein',
-        racePosition : 5,
-        raceTime : '1:48:28.75'
-      }
-
-    ] 
+    this.driverData = this.infoPage.getInfoDriver("");
+    this.driverPositions = this.driverData.races;
   }
 
+  changeDriver (driver: any){
+    this.driverData = this.infoPage.getInfoDriver(driver);
+    this.driverPositions = this.driverData.races;
+    alert (this.driverData.name);
+    this.isOpen= true;
+  }
 }

@@ -1,6 +1,12 @@
 <app-header></app-header>
-<p class="green"><span>Ranking / {{typeReport}}</span>
-<button>Select Race</button></p>
+<p class="green"><span>Ranking / {{typeReport}}</span></p>
+<button>Select Race</button>
+<div class="green">
+    <select (change) ="onSelectRace($event)">
+        <option>Select Race</option>
+        <option *ngFor="let item of allRaces" value="{{item.name}}">{{item.name}}</option>
+    </select>
+</div>
 <table>
     <tr class="tableHead">
         <th>&nbsp;&nbsp;&nbsp;</th>
@@ -8,21 +14,14 @@
         <th>Name</th>
         <th>Team</th>
     </tr>
-    <tr *ngFor="let item of driversList">
+    <tr *ngFor="let item of driversList" (click)="onSelectDriver(item.name)">
         <td></td>
-        <td>{{item.gRanking}}</td>
+        <td>{{item.position}}</td>
         <td>{{item.name}}</td>
         <td>{{item.team}}  </td>
     </tr>
-    <p>Muestra</p>
-    <ul *ngFor= "let item of allRaces" >
-        <li >{{item}}</li>
-        <li >{{item}}</li>
-    </ul>
-
-    
 </table>
+
 <div class="mainScreen">
     <router-outlet></router-outlet>
 </div>
-

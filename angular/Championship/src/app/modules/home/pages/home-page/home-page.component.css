@@ -1,11 +1,13 @@
+
 button {
     margin-left: 100px;
     background-color: var(--color-1);
     color:white;
 }
 table {
-    margin-left: 30px;
-    margin-right: 20px;
+    
+    margin-left: 120px;
+    margin-right: 200px;
     margin-top: 10px;
     border:none;
     border-collapse: collapse;
@@ -36,10 +38,11 @@ tr:nth-child(odd){
     background-color: var(--color-2);
 }
 tr.tableHead{
+    
     border:1px solid var(--color-1);
-    border-radius: 5% 10% 15% 50%;
-    -webkit-border-radius: 20px,50px,30px,6px;
-    -moz-border-radius:20px,50px,30px,6px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+   
     background-color: var(--color-1);
     color:white;
     font-family:'Calibri';

@@ -3,6 +3,7 @@ export class RaceDriver {
     name : string ="";
     team : string ="";
     time : string = '';
+    picture : string ="";
     timeCompare? : Date;
     position : number=99;
 }

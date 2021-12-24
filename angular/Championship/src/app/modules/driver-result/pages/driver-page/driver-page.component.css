@@ -34,9 +34,8 @@ tr:nth-child(odd){
 }
 tr.tableHead{
     border:1px solid var(--color-1);
-    border-radius: 5% 10% 15% 50%;
-    -webkit-border-radius: 20px,50px,30px,6px;
-    -moz-border-radius:20px,50px,30px,6px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     background-color: var(--color-1);
     color:white;
     font-family:'Calibri';
@@ -47,7 +46,7 @@ tr.tableHead{
     width:200 px;
     float:right;
     margin: 0px 200px 10px 100px;
-
+    
 }
 #personalData {
     margin: 0px 200px 100px 250px;
