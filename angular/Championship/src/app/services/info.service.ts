@@ -6,7 +6,7 @@ import { DriverRace } from '../models/DriverRace';
 import { RaceData } from 'src/app/models/RaceData'; // add
 import { RaceDriver } from 'src/app/models/RaceDriver'; //add
 import { Option } from 'src/app/models/Option'; //add
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -22,7 +22,6 @@ export class InfoService {
 
   dataFile : any = (data as any).default;
   driverSet : Array<DriverData> = [];
-  private raceCategories$ = new Subject<Option[]>();
 
   constructor( private http: HttpClient) {
     console.log ("Service is running..");
@@ -77,15 +76,12 @@ export class InfoService {
       nueva.name = element.name;
       this.raceOptions.push(nueva);
     });
-    this.raceOptions.forEach (r=>this,this.raceCategories$.next(this.raceOptions)); 
    }
    getInfoRaceCategories (){
          return this.raceOptions;
    }
-   getRaceOption$() : Observable<Option[]>{
-    return this.raceCategories$.asObservable ();
-  }
 
+  
 
    buildRaceData() {
     count_driver: Number;

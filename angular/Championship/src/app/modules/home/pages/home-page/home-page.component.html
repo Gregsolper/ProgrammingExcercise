@@ -3,7 +3,7 @@
 <button>Select Race</button>
 <div class="green">
     <select (change) ="onSelectRace($event)">
-        <option>Select Race</option>
+        <option>Global</option>
         <option *ngFor="let item of allRaces" value="{{item.name}}">{{item.name}}</option>
     </select>
 </div>
