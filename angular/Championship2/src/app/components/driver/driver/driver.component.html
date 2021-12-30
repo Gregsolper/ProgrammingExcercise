@@ -1,0 +1,34 @@
+
+<p class="green"><span>Diver Season Results</span>
+    <button><a href="\">Back</a>
+    
+    </button></p>
+    <div id="Races">
+    <table>
+        <tr class="tableHead">
+            <th>Race</th>
+            <th>Position</th>
+            <th>Time</th>
+        </tr>
+        <tr *ngFor="let item of driverPositions">
+            <td>{{item.name}}</td>
+            <td>{{item.position}}</td>
+            <td>{{item.time}}</td>
+        </tr>
+    </table>
+    </div>
+    <div id="personalData">
+        <p>Driver Card</p>
+        <img src = {{driverData.picture}} alt="64 x 64" style="width:64px;height: 60px;">
+        <p class="green">Name</p>
+        <p>{{driverData.name}}</p>
+        <p class="green">Age</p>
+        <p>{{driverData.age}}</p>
+        <p class="green">Team</p>
+        <p>{{driverData.team}}</p>
+        <p class="green">Global Ranking</p>
+        <p>{{driverData.gRanking}}</p>
+    </div>
+   
+    
+    

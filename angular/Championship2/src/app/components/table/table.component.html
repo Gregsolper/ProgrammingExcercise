@@ -1,0 +1,24 @@
+<p class="green"><span>Ranking / {{typeReport}}</span></p>
+<button>Select Race</button>
+<div class="green">
+    <select (change) ="onSelectRace($event)">
+        <option>Global</option>
+        <option *ngFor="let item of allRaces" value="{{item.name}}">{{item.name}}</option>
+    </select>
+</div>
+<table>
+    <tr class="tableHead">
+        <th>&nbsp;&nbsp;&nbsp;</th>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Team</th>
+    </tr>
+    <tr *ngFor="let item of driversList" (click)="onSelectDriver(item.name)">
+       
+        <td></td>
+        <td>{{item.position}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.team}}  </td>
+        <a routerLink="/driver"> liga para saltar</a>
+    </tr>
+</table>
