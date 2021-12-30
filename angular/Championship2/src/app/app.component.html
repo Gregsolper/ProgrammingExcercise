@@ -1,4 +1,4 @@
 <app-header></app-header>
-<div>
-<router-outlet></router-outlet>
-</div>
+<app-table *ngIf="currentView=='race'"></app-table>
+<app-driver *ngIf="currentView=='driver'"></app-driver>
+

@@ -1,0 +1,53 @@
+.green {
+    color : var(--color-1);
+    font-family:'Calibri';
+    font-weight: lighter;
+    font-size: 110%;
+}
+button {
+    margin-left: 100px;
+    background-color: var(--color-1);
+    color:white;
+}
+table {
+    margin-left: 30px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border:none;
+    border-collapse: collapse;
+    text-align: center;
+}
+th:nth-child(1){
+    width: 10px;
+}
+th:nth-child(2){
+    width: 20px;
+}
+th:nth-child(3){
+    width: 150px;
+}
+th:nth-child(1){
+    width: 100px;
+}
+tr:nth-child(odd){
+    background-color: var(--color-2);
+}
+tr.tableHead{
+    border:1px solid var(--color-1);
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: var(--color-1);
+    color:white;
+    font-family:'Calibri';
+    font-style: italic;
+    font-weight: lighter;
+}
+#Races{
+    width:200 px;
+    float:right;
+    margin: 0px 200px 10px 100px;
+    
+}
+#personalData {
+    margin: 0px 200px 100px 250px;
+}

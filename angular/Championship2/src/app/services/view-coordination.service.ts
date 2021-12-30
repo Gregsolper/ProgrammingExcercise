@@ -4,9 +4,9 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CommunicationService {
-  message : string="";
-
+export class ViewCoordinationService {
+  message : string ='';
+  
   private sendMessageSubject = new Subject<string>();
   sendMessageObservable = this.sendMessageSubject.asObservable();
 
@@ -14,6 +14,9 @@ export class CommunicationService {
     this.message = message;
     this.sendMessageSubject.next(message);
   }
+  
+  
+  
   
   constructor() { }
 }

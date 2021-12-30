@@ -1,16 +1,16 @@
-
-<p class="green"><span>Diver Season Results</span>
-    <button><a href="\">Back</a>
-    
-    </button></p>
+<div>
+    <p class="green"><span>Driver Season Results</span>
+        <button (click)="changeView()">Back</button>
+    </p>
     <div id="Races">
+
     <table>
         <tr class="tableHead">
             <th>Race</th>
             <th>Position</th>
             <th>Time</th>
         </tr>
-        <tr *ngFor="let item of driverPositions">
+        <tr *ngFor="let item of driverData.races">
             <td>{{item.name}}</td>
             <td>{{item.position}}</td>
             <td>{{item.time}}</td>
@@ -29,6 +29,6 @@
         <p class="green">Global Ranking</p>
         <p>{{driverData.gRanking}}</p>
     </div>
-   
+</div>   
     
     

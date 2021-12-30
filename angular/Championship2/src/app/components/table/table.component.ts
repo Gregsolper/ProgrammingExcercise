@@ -2,6 +2,8 @@ import { Component, OnInit, Output } from '@angular/core';
 import { InfoService } from 'src/app/services/info.service';
 import { RaceData } from 'src/app/models/RaceData';
 import { DriverComponent } from '../driver/driver/driver.component';
+import { CommunicationService } from 'src/app/services/communication.service';
+import { ViewCoordinationService } from 'src/app/services/view-coordination.service';
 
 
 @Component({
@@ -12,44 +14,56 @@ import { DriverComponent } from '../driver/driver/driver.component';
 
 export class TableComponent implements OnInit {
   typeReport: String = "Global";
-  allRaces: Array<any> = [];
+  viewRaces: Array<RaceData> = [];
   driversList: Array<any> = []
   raceShow : RaceData = new RaceData;
-  //raceView : Boolean = true;
- // @Input() driverPage : DriverComponent = new DriverComponent(this.infoPage);
+  selectedDriver : string ='';
+  currentView : string ='';
 
-
-  constructor(private infoPage : InfoService) {
+  constructor(private infoPage : InfoService, 
+              private communicationService : CommunicationService,
+              private viewCoordination : ViewCoordinationService) {
     this.infoPage.getInfoRace("Global").subscribe(
       race => this.raceShow = race
     );
     this.driversList = this.raceShow.RaceDriver;
+    this.selectedDriver = this.driversList[0].name;
+    this.initSelectDriver(this.selectedDriver);
    }
 
   ngOnInit(): void {
-    //this.allRaces= 
     this.infoPage.getInfoRacesChampionShip().subscribe (
-      races => this.allRaces = races
+      races => this.viewRaces = races
     );
+    this.communicationService.sendMessageObservable.subscribe (
+      message => this.selectedDriver = message
+    );
+    this.viewCoordination.sendMessageObservable.subscribe ( 
+      view => this.currentView = view
+    );
+  
+    
   }
 
   onSelectRace(state : any){
-    console.log(state.target.value);
-    this.typeReport = state.target.value;
-     
-    this.infoPage.getInfoRace(this.typeReport).subscribe(
-      race=> this.raceShow = race
-    );
-    this.driversList = this.raceShow.RaceDriver;
-    
+    if (state.target.value !='--select race to view--') {
+      this.typeReport = state.target.value;
+      this.infoPage.getInfoRace(this.typeReport).subscribe(
+        race=> this.raceShow = race
+      );
+      this.driversList = this.raceShow.RaceDriver;
+    }
   }
-  //@Output() messageEvent = new EventEmitter();
 
-  onSelectDriver ( driver:any){
+  onSelectDriver ( driver:string){
+      this.communicationService.sendMessage (driver);
+      this.infoPage.setCurrentDriver (driver);
+      this.viewCoordination.sendMessage('driver');
+  }
+
+  initSelectDriver ( driver:string){
+    this.communicationService.sendMessage (driver);
     this.infoPage.setCurrentDriver (driver);
-//    this.raceView = false;
-    //this.messageEvent.emit (driver);
-    //this.driverPage.changeDriver(driver);   
   }
 
 }

@@ -6,11 +6,13 @@ import { FooterComponent } from './components/footer/footer/footer.component';
 import { TableComponent } from './components/table/table.component';
 import { DriverComponent } from './components/driver/driver/driver.component';
 import { InfoService } from './services/info.service';
+import { CommunicationService } from './services/communication.service';
+import { ViewCoordinationService } from './services/view-coordination.service';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/race', pathMatch: 'full'},
-  {path: 'driver', component: DriverComponent},
+  //{path: '', redirectTo: '/race', pathMatch: 'full'},
+  //{path: 'driver', component: DriverComponent},
   {path: 'race', component: TableComponent}
 ];
 
@@ -28,7 +30,7 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
   
-  providers: [ InfoService],
+  providers: [ InfoService, CommunicationService, ViewCoordinationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

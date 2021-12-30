@@ -12,15 +12,14 @@ import { RaceDriver } from 'src/app/models/RaceDriver'; //add
 import { Option } from 'src/app/models/Option'; //add
 import { Observable, of } from 'rxjs';
 import { Subject } from 'rxjs';
-/*
+
 @Injectable({
   providedIn: 'root'
 })
-*/
+
 export class InfoService {
-  drivers: Array<DriverData> = []; //add
-  races: Array<RaceData> = []; //add
-  allRaces: Array<String> = []; //add
+  drivers: Array<DriverData> = []; 
+  races: Array<RaceData> = []; 
   raceOptions: Array<Option> = [];
   info : any = {};
   loaded = false;
@@ -29,31 +28,31 @@ export class InfoService {
   dataFile : any = (data as any).default;
   driverSet : Array<DriverData> = [];
 
-  //constructor( private http: HttpClient) {
+  //constructor( private http: HttpClient) {  Use when an API is provided
     constructor( ) {
-    console.log ("Service is running..");
-    /* if the information is in a page 
-   
-    http.get ('/assets/driver.json')
-          .subscribe ( resp=>{
-            this.info = resp;
-            this.loaded = true  ;
-          });
-    */
-          //console.log ('data-->' + data);
-          
-    this.dataFile.forEach((element: { _id: any; age: number; picture: string; team: string; name: string; races: DriverRace[]; }) => {
-      let otro : DriverData = new DriverData;
-      otro._id = element._id;
-      otro.age = element.age;
-      otro.picture = element.picture;
-      otro.team = element.team;
-      otro.name = element.name;
-      otro.races = element.races;
-      this.driverSet.push ( otro);
-    });    
-    this.drivers=this.driverSet;
-    this.buildRaceData();
+      console.log ("Service is running..");
+      /* if the information is in a page 
+    
+      http.get ('/assets/driver.json')
+            .subscribe ( resp=>{
+              this.info = resp;
+              this.loaded = true  ;
+            });
+      */
+            //console.log ('data-->' + data);
+            
+      this.dataFile.forEach((element: { _id: any; age: number; picture: string; team: string; name: string; races: DriverRace[]; }) => {
+        let otro : DriverData = new DriverData;
+        otro._id = element._id;
+        otro.age = element.age;
+        otro.picture = element.picture;
+        otro.team = element.team;
+        otro.name = element.name;
+        otro.races = element.races;
+        this.driverSet.push ( otro);
+      });    
+      this.drivers=this.driverSet;
+      this.buildRaceData();
       this.currentDriver = this.drivers[0];
     }
 

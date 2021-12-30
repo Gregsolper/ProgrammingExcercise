@@ -2,8 +2,8 @@
 <button>Select Race</button>
 <div class="green">
     <select (change) ="onSelectRace($event)">
-        <option>Global</option>
-        <option *ngFor="let item of allRaces" value="{{item.name}}">{{item.name}}</option>
+        <option>--select race to view--</option>
+        <option *ngFor="let item of viewRaces" value="{{item.name}}">{{item.name}}</option>
     </select>
 </div>
 <table>
@@ -19,6 +19,6 @@
         <td>{{item.position}}</td>
         <td>{{item.name}}</td>
         <td>{{item.team}}  </td>
-        <a routerLink="/driver"> liga para saltar</a>
+        
     </tr>
 </table>
