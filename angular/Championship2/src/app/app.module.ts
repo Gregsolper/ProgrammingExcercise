@@ -11,8 +11,7 @@ import { ViewCoordinationService } from './services/view-coordination.service';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  //{path: '', redirectTo: '/race', pathMatch: 'full'},
-  //{path: 'driver', component: DriverComponent},
+  {path: '', redirectTo: '/race', pathMatch: 'full'},
   {path: 'race', component: TableComponent}
 ];
 

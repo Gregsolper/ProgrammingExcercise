@@ -4,50 +4,74 @@
     font-weight: lighter;
     font-size: 110%;
 }
-button {
+
+.title {
+    color : var(--color-1);
+    font-family:'Calibri';
+    font-weight: lighter;
+    font-size: 180%;
+    width:auto;
+    margin-bottom: 30px;
     margin-left: 100px;
-    background-color: var(--color-1);
-    color:white;
+    
+    text-align: center;
 }
-table {
+.tableDriver {
     margin-left: 30px;
     margin-right: 20px;
     margin-top: 10px;
-    border:none;
-    border-collapse: collapse;
-    text-align: center;
 }
-th:nth-child(1){
-    width: 10px;
-}
-th:nth-child(2){
-    width: 20px;
-}
-th:nth-child(3){
-    width: 150px;
-}
+
 th:nth-child(1){
     width: 100px;
 }
-tr:nth-child(odd){
-    background-color: var(--color-2);
+th:nth-child(2){
+    width: 100px;
 }
-tr.tableHead{
+th:nth-child(3){
+    width: 100px;
+}
+tr {
+    height: 35px;
+}
+td:nth-child(3){
+    text-align: left;
+    margin-left: 50px;
+}
+
+
+#Races{
+    width:500px;
+    float:right;
+    margin: 0px 250px 10px 0px;
+    
+}
+#personalData {
+    width: 200px;
+    height: auto;
+    margin: 0px 0px 0px 200px;
+    text-align: center;
     border:1px solid var(--color-1);
     border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+}
+
+p.tableHead{
+    border:1px solid var(--color-1);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     background-color: var(--color-1);
     color:white;
     font-family:'Calibri';
     font-style: italic;
     font-weight: lighter;
+    margin-top: 0px;
+    height: 25px;
 }
-#Races{
-    width:200 px;
-    float:right;
-    margin: 0px 200px 10px 100px;
-    
-}
-#personalData {
-    margin: 0px 200px 100px 250px;
+
+#back {
+    margin-left:150px;
+    width : 100px;
 }

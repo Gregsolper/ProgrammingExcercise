@@ -5,7 +5,13 @@ import { DriverComponent } from '../driver/driver/driver.component';
 import { CommunicationService } from 'src/app/services/communication.service';
 import { ViewCoordinationService } from 'src/app/services/view-coordination.service';
 
-
+/**
+ * Component dedicated to displaying the list of drivers' positions
+ * in the championship or in a given race.
+ * @see AppComponent
+ * @see DriverComponent
+ * December 2021.
+ */
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -19,7 +25,12 @@ export class TableComponent implements OnInit {
   raceShow : RaceData = new RaceData;
   selectedDriver : string ='';
   currentView : string ='';
-
+  /**
+   * Construct the initial values
+   * @param infoPage Service to get Information
+   * @param communicationService Service to inform current driver
+   * @param viewCoordination Service to coordinate current viewed component
+   */
   constructor(private infoPage : InfoService, 
               private communicationService : CommunicationService,
               private viewCoordination : ViewCoordinationService) {
@@ -44,7 +55,10 @@ export class TableComponent implements OnInit {
   
     
   }
-
+  /**
+   * Get the information of selected race
+   * @param state Becomes form html page is the seleted race
+   */
   onSelectRace(state : any){
     if (state.target.value !='--select race to view--') {
       this.typeReport = state.target.value;
@@ -54,13 +68,21 @@ export class TableComponent implements OnInit {
       this.driversList = this.raceShow.RaceDriver;
     }
   }
-
+  /**
+   * informs the selected driver to the components, 
+   * and to the data collection service as well as indicates
+   *  that it is required to make the "driver" component visible
+   * @param driver driver selected 
+   */
   onSelectDriver ( driver:string){
       this.communicationService.sendMessage (driver);
       this.infoPage.setCurrentDriver (driver);
       this.viewCoordination.sendMessage('driver');
   }
-
+  /**
+   * It is used by the constructor to start with the information of the current driver
+   * @param driver first driver to view
+   */
   initSelectDriver ( driver:string){
     this.communicationService.sendMessage (driver);
     this.infoPage.setCurrentDriver (driver);

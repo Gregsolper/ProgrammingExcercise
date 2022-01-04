@@ -1,25 +1,39 @@
 <div>
-    <p class="green"><span>Driver Season Results</span>
-        <button (click)="changeView()">Back</button>
-    </p>
+    <div class="title">
+        <span>Driver Season Results</span>
+        <button id="back" (click)="changeView()">Back</button>
+    </div>
     <div id="Races">
 
-    <table>
-        <tr class="tableHead">
-            <th>Race</th>
-            <th>Position</th>
-            <th>Time</th>
-        </tr>
-        <tr *ngFor="let item of driverData.races">
-            <td>{{item.name}}</td>
-            <td>{{item.position}}</td>
-            <td>{{item.time}}</td>
-        </tr>
-    </table>
+        <table class="tableDriver">
+            <tr class="tableHead">
+                <th>Race</th>
+                <th>Position</th>
+                <th>Time</th>
+            </tr>
+            <tr *ngFor="let item of driverData.races">
+                <td>{{item.name}}</td>
+                <td class="tooltip" *ngIf="item.position==1">
+                    <img class="medal" src="/assets/img/gold-medal-svgrepo-com.svg" alt="gold medal">
+                    <span class="tooltiptext">Gold medal</span>
+                </td>
+                <td class="tooltip" *ngIf="item.position==2"><img class="medal"
+                        src="/assets/img/silver-medal-svgrepo-com.svg" alt="silver medal">
+                    <span class="tooltiptext">Silver medal</span>
+                </td>
+                <td class="tooltip" *ngIf="item.position==3"><img class="medal" src="/assets/img/bronze-medal-svgrepo-com.svg"
+                        alt="bronze medal">
+                        <span class="tooltiptext">Bronze medal</span>
+                    </td>
+                <td *ngIf="item.position>3">{{item.position}}</td>
+                <td>{{item.time}}</td>
+            </tr>
+        </table>
     </div>
     <div id="personalData">
-        <p>Driver Card</p>
-        <img src = {{driverData.picture}} alt="64 x 64" style="width:64px;height: 60px;">
+        <p class="tableHead">Driver Card</p>
+        <p></p>
+        <img src={{driverData.picture}} alt="64 x 64" style="width:64px;height: 60px;">
         <p class="green">Name</p>
         <p>{{driverData.name}}</p>
         <p class="green">Age</p>
@@ -27,8 +41,12 @@
         <p class="green">Team</p>
         <p>{{driverData.team}}</p>
         <p class="green">Global Ranking</p>
-        <p>{{driverData.gRanking}}</p>
+        <p *ngIf="driverData.gRanking==1"><img class="medal" src="/assets/img/gold-medal-svgrepo-com.svg"
+                alt="gold medal"></p>
+        <p *ngIf="driverData.gRanking==2"><img class="medal" src="/assets/img/silver-medal-svgrepo-com.svg"
+                alt="silver medal"></p>
+        <p *ngIf="driverData.gRanking==3"><img class="medal" src="/assets/img/bronze-medal-svgrepo-com.svg"
+                alt="bronze medal"></p>
+        <p *ngIf="driverData.gRanking>3">{{driverData.gRanking}}</p>
     </div>
-</div>   
-    
-    
+</div>

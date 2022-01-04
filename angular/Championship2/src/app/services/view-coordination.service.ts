@@ -4,6 +4,9 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * Service used to coordinate visible component
+ */
 export class ViewCoordinationService {
   message : string ='';
   
