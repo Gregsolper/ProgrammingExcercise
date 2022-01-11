@@ -15,19 +15,19 @@ interface Option {
 
 })
 
-
-
 export class HomePageComponent implements OnInit {
   typeReport: String = "Global";
   allRaces: Array<any> = [];
   driversList: Array<any> = []
   raceShow : RaceData = new RaceData;
 
-  
   @Input() driverPage : DriverPageComponent = new DriverPageComponent(this.infoPage);
 
   constructor(private infoPage: InfoService) { 
-      this.raceShow = this.infoPage.getInfoRace("Global");
+      //this.raceShow = 
+      this.infoPage.getInfoRace("Global").subscribe(
+        race => this.raceShow = race
+      );
       this.driversList = this.raceShow.RaceDriver;
   }  
 
@@ -39,7 +39,10 @@ export class HomePageComponent implements OnInit {
   onSelectRace(state : any){
     console.log(state.target.value);
     this.typeReport = state.target.value;
-    this.raceShow = this.infoPage.getInfoRace(this.typeReport);
+     
+    this.infoPage.getInfoRace(this.typeReport).subscribe(
+      race=> this.raceShow = race
+    );
     this.driversList = this.raceShow.RaceDriver;
     
   }

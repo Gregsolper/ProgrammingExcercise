@@ -21,12 +21,18 @@ export class DriverPageComponent implements OnInit {
   driverPositions : Array<DriverRace> = []
 
   ngOnInit(): void {
-    this.driverData = this.infoPage.getInfoDriver("");
+    //this.driverData = 
+    this.infoPage.getInfoDriver("").subscribe(
+      driver => this.driverData = driver
+    );  //<-
     this.driverPositions = this.driverData.races;
   }
 
   changeDriver (driver: any){
-    this.driverData = this.infoPage.getInfoDriver(driver);
+     
+    this.infoPage.getInfoDriver(driver).subscribe(
+      driver => this.driverData =driver
+    );  
     this.driverPositions = this.driverData.races;
     alert (this.driverData.name);
     this.isOpen= true;

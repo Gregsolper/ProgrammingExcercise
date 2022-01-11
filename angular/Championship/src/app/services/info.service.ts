@@ -58,15 +58,15 @@ export class InfoService {
     return this.races;
    }
 
-   getInfoDriver (searchedDriver : String)  {
+   getInfoDriver (searchedDriver : String) : Observable <DriverData> {
      if (searchedDriver=="") {
-       return  this.drivers[0];
+       return  of (this.drivers[0] );
      }
-    return this.drivers.filter (x=> x.name == searchedDriver )[0];
+    return of( this.drivers.filter (x=> x.name == searchedDriver )[0] );
    }
 
-   getInfoRace (searchedRace : String)  {
-    return this.races.filter (x=> x.name == searchedRace )[0];
+   getInfoRace (searchedRace : String)  : Observable <RaceData> {
+    return of(this.races.filter (x=> x.name == searchedRace )[0]);
    }
 
    buildRaceOptions () {
@@ -77,7 +77,7 @@ export class InfoService {
       this.raceOptions.push(nueva);
     });
    }
-   getInfoRaceCategories (){
+   getInfoRaceCategories () {
          return this.raceOptions;
    }
 
